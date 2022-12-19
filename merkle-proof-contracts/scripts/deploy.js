@@ -3,14 +3,12 @@ const { ethers, upgrades } = require("hardhat");
 require("dotenv").config();
 
 async function main() {
-  const PriceConsumer = await ethers.getContractFactory("PriceConsumerV3");
-  const priceConsumer = await PriceConsumer.deploy(nativeToUsd[network], euroToUsd[network]);
-  await priceConsumer.deployed();
-  console.log("🚀 PriceConsumer Address", priceConsumer.address);
+  const MerkleNFT = await ethers.getContractFactory("MerkleNFT");
+  const merkleNFT = await MerkleNFT.deploy(nativeToUsd[network], euroToUsd[network]);
+  await merkleNFT.deployed();
+  console.log("MerkleNFT Address: ", merkleNFT.address);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
